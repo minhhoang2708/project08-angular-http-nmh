@@ -1,0 +1,44 @@
+<div class="card">
+
+
+    <div class="card-header card text-white bg-danger mb-3">Github </div>
+    <div class="card-body">
+        <div class="row" *ngIf="profileInFo">
+            <div class="col-sm-5">
+                <img  [src]="profileInFo.avatar_url" alt="" class="img-responsive" />
+                <p><b>Name:</b> {{profileInFo.name}} </p>
+                <p><b>company:</b> {{profileInFo.company}} </p>
+                <p><b>blog:</b> {{profileInFo.blog}} </p>
+                <p><b>location:</b> {{profileInFo.location}} </p>
+                <p><b>email:</b> {{profileInFo.email}} </p>
+                <p><a [href]="profileInFo.html_url">View Profile</a></p>
+            </div>
+            
+            <div class="col-sm-7">
+                <h3>List Repository</h3>
+                <div class="list-group" *ngIf="listRepos">
+                    <a [href]="repo.html_url" *ngFor="let repo of listRepos; let i=index" class="list-group-item list-group-item-action">{{i+1}} . {{repo.name}}</a>
+           
+                </div>
+                <div class="list-group" *ngIf="!listRepos">
+                    <b>User này không có repository nào hết!!</b>
+                </div>
+            </div>
+        </div>
+        <div class="row" *ngIf="!profileInFo">
+                <b>Vui lòng nhập username</b>
+        </div>
+  
+    </div>
+    <div class="card-footer">
+        <div class="form-group">
+            <input #name type="text" class="form-control" name="userName"placeholder="userName.."  
+            [(ngModel)]="userName"
+            (keyup)="updateActiveButton($event.target.value)"
+            />
+        </div>
+        <button href="#" (click)="loadUser()" [disabled]="isDisableButton" class="btn btn-danger">Search</button>
+        <b>{{userName}}</b>
+    </div>
+
+</div>

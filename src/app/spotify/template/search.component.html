@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-header card text-white bg-success mb-3">Spotify </div>
+    <div class="card-body">
+        <div class="row" *ngIf="artists">
+            <div class="col-sm-5">
+                {{artists | json}}
+            </div>
+            
+            <!-- <div class="col-sm-7">
+                <h3>List Repository</h3>
+                <div class="list-group" *ngIf="listRepos">
+                    <a [href]="repo.html_url" *ngFor="let repo of listRepos; let i=index" class="list-group-item list-group-item-action">{{i+1}} . {{repo.name}}</a>
+           
+                </div>
+                <div class="list-group" *ngIf="!listRepos">
+                    <b>User này không có repository nào hết!!</b>
+                </div>
+            </div> -->
+        </div>
+        <div class="row" *ngIf="!artists">
+                <b>Vui lòng nhập username để tìm kiếm hàng ngàn nghệ sĩ</b>
+        </div>
+  
+    </div>
+    <div class="card-footer">
+        <div class="form-group">
+            <input #name type="text" class="form-control" name="userName"placeholder="userName.."  
+            [(ngModel)]="userName"
+            (keyup)="updateActiveButton($event.target.value)"
+            />
+        </div>
+        <button href="#" (click)="loadArtist()" [disabled]="isDisableButton" class="btn btn-danger">Search</button>
+        <b>{{userName}}</b>
+    </div>
+
+</div>

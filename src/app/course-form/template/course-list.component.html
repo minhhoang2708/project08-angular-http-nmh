@@ -1,0 +1,95 @@
+<div class="card w-100">
+    <div class="card-header card text-white bg-warning mb-3">Course CRUD</div>
+    <div class="card-body w-100 ">
+        <div class="table-responsive">
+            <table class="table table-striped table-inverse">
+                <thead class="thead-inverse">
+                    <tr> 
+                        <th width=5%>#</th>
+                        <th width=5%>ID</th>
+                        <th width=20%>NAME</th>
+                        <th width=10%>Free</th>
+                        <th width=40%>Description</th>
+                        <th width=20%>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-template [ngIf]="courses.length == 0 || courses == null">
+                        <tr>
+                            <td colspan="6"><b>Data không được tìm thấy!!!</b></td>
+                        </tr>
+                    </ng-template>
+                    <ng-template [ngIf]="courses.length > 0">
+                        <tr *ngFor="let course of courses; let i=index">
+                            <td scope="row">{{i + 1}}</td>
+                            <td>{{course.id}}</td>
+                            <td>{{course.name}}</td>
+                            <td><button (click)="changeToFree(course)"class="btn btn-secondary" *ngIf="course.free == false">No FREE</button>
+                                <button (click)="changeToFree(course)" class="btn btn-info" *ngIf="course.free == true">FREE</button>
+                            </td>
+                            <td>{{course.description}}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button (click)="selectedCourse = course" class="btn btn-warning">Edit</button>                                    
+                                    <button (click)="deleleCourse(course.id)" class="btn btn-danger">Delete</button>
+                                </div>
+                            </td>
+                        </tr>
+                </ng-template>           
+                   
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+                <div class="card ">
+                        <div class="card-header card text-white bg-info mb-3">Add</div>
+                        <div class="card-body form-inline ">
+                            <div class="form-inline">
+                              <label for="">Tên:  </label>
+                              <input #courseName type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">             
+                            </div>
+                            <div class="form-inline">
+                                <label for="">Mô tả</label>
+                                <input #courseDescription  type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="">        
+                            </div>
+                            <div class="form-inline">
+                                <label for="">Free</label>
+                                <input type="checkbox" #courseFree class="form-control" value="">
+                            </div>
+                            <button (click)="addCourse(courseName.value, courseDescription.value, courseFree.checked)" class="btn btn-outline-secondary">Add</button>
+                        </div>    
+                    </div>
+        </div>
+        <div class="col-sm-6">
+                <div *ngIf="selectedCourse" class="card ">
+                        <div class="card-header card text-white bg-success mb-3">Edit</div>
+                        <div class="card-body form-inline ">
+                            <div class="form-inline">
+                              <label for="">Tên:  </label>
+                              <input #courseId type="hidden" class="form-control"   [value]="selectedCourse.id" />   
+                              <input #courseName type="text" class="form-control"  [(ngModel)]="selectedCourse.name" />             
+                            </div>
+                            <div class="form-inline">
+                                <label for="">Mô tả</label>
+                                <input #courseDescription  type="text" class="form-control" [(ngModel)]="selectedCourse.description" />        
+                            </div>
+                            <div class="form-inline">
+                                <label for="">Free</label>
+                                <input type="checkbox" #courseFree class="form-control" [(ngModel)]="selectedCourse.free" />
+                            </div>
+                            <button (click)="editCourse(courseId.value, courseName.value, courseDescription.value, courseFree.checked)" class="btn btn-outline-secondary">Update</button>
+                        </div>    
+                    </div>
+        </div>
+       
+    </div>
+</div>
+<p></p>
+<p></p>
+<p></p>
+<p></p>

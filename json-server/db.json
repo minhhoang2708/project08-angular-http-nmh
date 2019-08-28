@@ -1,0 +1,28 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "name": "Angular",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut itaque quisquam magni quaerat deserunt aliquam natus expedita aliquid. Sed, explicabo.",
+      "free": true
+    },
+    {
+      "id": 2,
+      "name": "ReactJs",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut itaque quisquam magni quaerat deserunt aliquam natus expedita aliquid. Sed, explicabo.",
+      "free": false
+    },
+    {
+      "id": 3,
+      "name": "NodeJs",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut itaque quisquam magni quaerat deserunt aliquam natus expedita aliquid. Sed, explicabo.",
+      "free": false
+    },
+    {
+      "id": 4,
+      "name": "Java",
+      "description": "lỏem20",
+      "free": true
+    }
+  ]
+}
